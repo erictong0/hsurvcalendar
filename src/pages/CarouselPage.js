@@ -8,6 +8,7 @@ function resolveGoogleDriveThumbnail(url) {
 export default function CarouselPage({ events, onClickEvent }) {
   const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const scrollBy = (offset) => {
     if (containerRef.current) {
@@ -20,7 +21,24 @@ export default function CarouselPage({ events, onClickEvent }) {
 
   return (
     <div className="relative pt-12">
-      <h2 className="text-2xl font-bold text-center mb-4">Upcoming Events</h2>
+      {/* Responsive Nav */}
+      <div className="absolute top-4 left-4 z-20">
+        <button
+          className="text-2xl p-2 rounded bg-white shadow md:hidden"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          ☰
+        </button>
+        {isMobileMenuOpen && (
+          <div className="absolute mt-2 w-40 bg-white shadow rounded p-2">
+            <a href="/" className="block py-1 text-blue-600 hover:underline">Home</a>
+            <a href="/calendar" className="block py-1 text-blue-600 hover:underline">Calendar</a>
+            <a href="/list" className="block py-1 text-blue-600 hover:underline">List</a>
+          </div>
+        )}
+      </div>
+
+      <h2 className="text-2xl font-bold text-center mb-4 mt-16">Upcoming Events</h2>
 
       <button
         className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 p-2 rounded shadow hover:bg-opacity-100"
