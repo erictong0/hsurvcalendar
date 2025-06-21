@@ -6,9 +6,18 @@ function resolveGoogleDriveThumbnail(url) {
 }
 
 export default function CarouselPage({ events, onClickEvent }) {
-  const containerRef = useRef(null);
+    const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  if (!events || events.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-lg text-gray-600">Loading events...</p>
+      </div>
+    );
+  }
+  
 
   const scrollBy = (offset) => {
     if (containerRef.current) {
