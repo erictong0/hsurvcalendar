@@ -6,18 +6,9 @@ function resolveGoogleDriveThumbnail(url) {
 }
 
 export default function CarouselPage({ events, onClickEvent }) {
-    const containerRef = useRef(null);
+  const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  if (!events || events.length === 0) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-lg text-gray-600">Loading events...</p>
-      </div>
-    );
-  }
-  
 
   const scrollBy = (offset) => {
     if (containerRef.current) {
@@ -31,7 +22,7 @@ export default function CarouselPage({ events, onClickEvent }) {
   return (
     <div className="relative pt-12">
       {/* Responsive Nav */}
-      <div className="absolute top-4 left-4 z-20">
+      <div className="absolute top-4 left-4 z-20 w-full flex justify-between items-center px-4 md:hidden">
         <button
           className="text-2xl p-2 rounded bg-white shadow md:hidden"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -39,7 +30,7 @@ export default function CarouselPage({ events, onClickEvent }) {
           ☰
         </button>
         {isMobileMenuOpen && (
-          <div className="absolute mt-2 w-40 bg-white shadow rounded p-2">
+          <div className="absolute top-full mt-2 left-0 w-40 bg-white shadow rounded p-2">
             <a href="/" className="block py-1 text-blue-600 hover:underline">Home</a>
             <a href="/calendar" className="block py-1 text-blue-600 hover:underline">Calendar</a>
             <a href="/list" className="block py-1 text-blue-600 hover:underline">List</a>
@@ -47,7 +38,7 @@ export default function CarouselPage({ events, onClickEvent }) {
         )}
       </div>
 
-      <h2 className="text-2xl font-bold text-center mb-4 mt-16">Upcoming Events</h2>
+      <h2 className="text-2xl font-bold text-center mb-4 mt-16 hidden md:block">Upcoming Events</h2>
 
       <button
         className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 p-2 rounded shadow hover:bg-opacity-100"
@@ -75,8 +66,19 @@ export default function CarouselPage({ events, onClickEvent }) {
           >
             {event["Flyer or Promotional Images"] ? (
               <img
-                src={resolveGoogleDriveThumbnail(event["Flyer or Promotional Images"])}
-                alt={`Flyer ${index}`}
+              src={resolveGoogleDriveThumbnail(event["Flyer or Promotional Images"])}
+              alt={`Flyer ${index}`}
+              onError={(e) => {
+                const maxRetries = 3;
+                let retries = e.target.getAttribute('data-retries') || 0;
+                if (retries < maxRetries) {
+                  setTimeout(() => {
+                    e.target.src = resolveGoogleDriveThumbnail(event["Flyer or Promotional Images"]);
+                    e.target.setAttribute('data-retries', parseInt(retries) + 1);
+                  }, 1000);
+                }
+              }}
+              data-retries="0"
                 className="w-full h-auto object-contain rounded shadow"
                 style={{ maxHeight: '65vh' }}
               />
