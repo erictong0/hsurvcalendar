@@ -128,7 +128,7 @@ function App() {
               onClick={() => setModalEvent(null)}
             >
               <motion.div
-                className="bg-white rounded-lg shadow-xl max-w-3xl w-full p-6 relative"
+                className="bg-white rounded-lg shadow-xl max-w-3xl w-full p-6 relative max-h-[90vh] overflow-y-auto"
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.9 }}
