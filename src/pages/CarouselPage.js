@@ -22,21 +22,7 @@ export default function CarouselPage({ events, onClickEvent }) {
   return (
     <div className="relative pt-12">
       {/* Responsive Nav */}
-      <div className="absolute top-4 left-4 z-20 w-full flex justify-between items-center px-4 md:hidden">
-        <button
-          className="text-2xl p-2 rounded bg-white shadow md:hidden"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          ☰
-        </button>
-        {isMobileMenuOpen && (
-          <div className="absolute top-full mt-2 left-0 w-40 bg-white shadow rounded p-2">
-            <a href="/" className="block py-1 text-blue-600 hover:underline">Home</a>
-            <a href="/calendar" className="block py-1 text-blue-600 hover:underline">Calendar</a>
-            <a href="/list" className="block py-1 text-blue-600 hover:underline">List</a>
-          </div>
-        )}
-      </div>
+      
 
       <h2 className="text-2xl font-bold text-center mb-4 mt-16 hidden md:block">Upcoming Events</h2>
 
