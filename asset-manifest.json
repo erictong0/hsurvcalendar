@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/hsurvcalendar/static/css/main.1750af3f.css",
-    "main.js": "/hsurvcalendar/static/js/main.b3547495.js",
+    "main.css": "/hsurvcalendar/static/css/main.ae9f2123.css",
+    "main.js": "/hsurvcalendar/static/js/main.5aecde3a.js",
     "static/js/453.d9e8f090.chunk.js": "/hsurvcalendar/static/js/453.d9e8f090.chunk.js",
     "index.html": "/hsurvcalendar/index.html",
-    "main.1750af3f.css.map": "/hsurvcalendar/static/css/main.1750af3f.css.map",
-    "main.b3547495.js.map": "/hsurvcalendar/static/js/main.b3547495.js.map",
+    "main.ae9f2123.css.map": "/hsurvcalendar/static/css/main.ae9f2123.css.map",
+    "main.5aecde3a.js.map": "/hsurvcalendar/static/js/main.5aecde3a.js.map",
     "453.d9e8f090.chunk.js.map": "/hsurvcalendar/static/js/453.d9e8f090.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1750af3f.css",
-    "static/js/main.b3547495.js"
+    "static/css/main.ae9f2123.css",
+    "static/js/main.5aecde3a.js"
   ]
 }
